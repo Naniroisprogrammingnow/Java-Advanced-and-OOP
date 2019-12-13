@@ -29,10 +29,6 @@ public class crossfire2 {
                 }
             }
             for (int i = 0; i < matrix.size(); i++) {
-               //matrix.set(i, matrix.get(i)
-               //        .stream()
-               //        .filter(e -> e!=0)
-               //        .collect(Collectors.toCollection(ArrayList::new)));
                 if (matrix.get(i).size()==0){
                     matrix.remove(r);
                     r--;
