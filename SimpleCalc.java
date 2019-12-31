@@ -1,7 +1,8 @@
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Scanner;
-public class simpleCalc {
+
+public class SimpleCalc {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);;
 
