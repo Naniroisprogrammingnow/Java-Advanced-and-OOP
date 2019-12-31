@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
-public class swapMatrixElements {
+
+public class SwapMatrixElements {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         int[] dim = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
