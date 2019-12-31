@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class mathPotato {
+public class MathPotato {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
 
