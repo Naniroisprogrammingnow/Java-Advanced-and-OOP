@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class robotics {
+public class Robotics {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
 
@@ -51,15 +51,6 @@ public class robotics {
         }
 
     }
-
-   // private static int getMinTime(Map<String, Integer[]> robots) {
-   //     int min = Integer.MAX_VALUE;
-   //     for(Map.Entry<String, Integer[]> e : robots.entrySet()){
-   //         if(e.getValue()[1]<min){
-   //
-   //         }
-   //     }
-   // }
 
     private static void printTask(String key,String product, long realTime) {
         String[] currTime = calcTime(realTime);
