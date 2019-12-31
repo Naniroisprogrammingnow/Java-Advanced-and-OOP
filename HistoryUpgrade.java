@@ -1,7 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-public class historyUpgrade {
+public class HistoryUpgrade {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayDeque<String> history = new ArrayDeque<>();
