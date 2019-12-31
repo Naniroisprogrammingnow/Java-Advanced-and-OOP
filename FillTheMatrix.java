@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class fillTheMatrix {
+public class FillTheMatrix {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         String[] info = scanner.nextLine().split(", ");
