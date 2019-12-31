@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class balanced {
+public class Balanced {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         String string = scanner.nextLine();
