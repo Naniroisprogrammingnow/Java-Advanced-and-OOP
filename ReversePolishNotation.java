@@ -1,7 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
-public class reversePolishNotation {
+public class ReversePolishNotation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
 
