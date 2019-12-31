@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class basicQueue {
+public class BasicQueue {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         int[] nums = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
