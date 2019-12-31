@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class submatrixSum {
+public class SubmatrixSum {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         int[] dim = Arrays.stream(scanner.nextLine().split(", ")).mapToInt(Integer::parseInt).toArray();
