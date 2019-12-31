@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
-public class parking {
+public class Parking {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         int[] dem = Arrays.stream(scanner.nextLine().split(" "))
