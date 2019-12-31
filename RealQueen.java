@@ -1,5 +1,6 @@
 import java.util.Scanner;
-public class realQueen {
+
+public class RealQueen {
     public static void main(String[] args) {
         Scanner scanner = new Scanner (System.in);
         char[][] chessBoard = new char[8][];
