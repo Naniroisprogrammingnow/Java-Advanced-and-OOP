@@ -9,6 +9,13 @@ public class Person {
     private List<Person> parents;
     private List<Person> children;
 
+    public Person(String name, String birthDate){
+        this.name = name;
+        this.birthDate = birthDate;
+        this.parents = new ArrayList<>();
+        this.children = new ArrayList<>();
+    }
+
     public Person(){
         this.name = "";
         this.birthDate = "";
