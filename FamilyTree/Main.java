@@ -35,28 +35,28 @@ public class Main {
         }
         for (String relation : relations) {
             String[] arr = relation.split(" - ");
-            String parent = arr[0];
-            String kid = arr[1];
-            if(isThisMyPerson(parent, myPerson)){
+            String parentInfo = arr[0];
+            String kidInfo = arr[1];
+            if(isThisMyPerson(parentInfo, myPerson)){
                 Person myChild = new Person();
-                if(isDate(kid)){
-                    myChild.setBirthDate(kid);
-                    findName(myChild, possibleRelatives, kid);
+                if(isDate(kidInfo)){
+                    myChild.setBirthDate(kidInfo);
+                    findName(myChild, possibleRelatives, kidInfo);
                     myPerson.getChildren().add(myChild);
                 }else{
-                    myChild.setName(kid);
-                    findBirthDate(myChild,possibleRelatives,kid);
+                    myChild.setName(kidInfo);
+                    findBirthDate(myChild,possibleRelatives,kidInfo);
                     myPerson.getChildren().add(myChild);
                 }
-            }else if(isThisMyPerson(kid, myPerson)){
+            }else if(isThisMyPerson(kidInfo, myPerson)){
                 Person myParent = new Person();
-                if(isDate(parent)){
-                    myParent.setBirthDate(parent);
-                    findName(myParent, possibleRelatives, parent);
+                if(isDate(parentInfo)){
+                    myParent.setBirthDate(parentInfo);
+                    findName(myParent, possibleRelatives, parentInfo);
                     myPerson.getParents().add(myParent);
                 }else{
-                    myParent.setName(parent);
-                    findBirthDate(myParent, possibleRelatives, parent);
+                    myParent.setName(parentInfo);
+                    findBirthDate(myParent, possibleRelatives, parentInfo);
                     myPerson.getParents().add(myParent);
                 }
             }
