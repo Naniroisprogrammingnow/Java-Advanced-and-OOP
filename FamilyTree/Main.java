@@ -10,67 +10,96 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String myInfo = bufferedReader.readLine();
-        String line;
-        List<String> infoDump = new ArrayList<>();
-        List<Person> unknownPeople = new ArrayList<>();
-        while (!"End".equals(line = bufferedReader.readLine())){
+        List<String> relations = new ArrayList<>();
+        List<Person> possibleRelatives = new ArrayList<>();
+        String line =bufferedReader.readLine();
+        while (!"End".equals(line)){
             if(line.contains(" - ")){
-                infoDump.add(line);
+                relations.add(line);
             }else{
                 String[] tokens = line.split("\\s+");
                 String name = tokens[0] + " " + tokens[1];
                 String date = tokens[2];
-                Person person = new Person();
-                person.setName(name);
-                person.setBirthDate(date);
-                unknownPeople.add(person);
+                Person person = new Person(name, date);
+                possibleRelatives.add(person);
             }
+            line = bufferedReader.readLine();
         }
         Person myPerson = new Person();
-        if(myInfo.contains("/")){
+        if(isDate(myInfo)){
             myPerson.setBirthDate(myInfo);
-            unknownPeople.stream()
-                    .filter(r->r.getBirthDate().equals(myInfo))
-                    .forEach(r->myPerson.setName(r.getName()));
+            findName(myPerson, possibleRelatives, myInfo);
         }else{
             myPerson.setName(myInfo);
-            unknownPeople.stream()
-                    .filter(r->r.getName().equals(myInfo))
-                    .forEach(r->myPerson.setBirthDate(r.getBirthDate()));
+            findBirthDate(myPerson, possibleRelatives, myInfo);
         }
-        for (String relation : infoDump) {
+        for (String relation : relations) {
             String[] arr = relation.split(" - ");
             String parent = arr[0];
             String kid = arr[1];
-            if(parent.equals(myPerson.getName()) || parent.equals(myPerson.getBirthDate())){
+            if(isThisMyPerson(parent, myPerson)){
                 Person myChild = new Person();
-                if(kid.contains("/")){
+                if(isDate(kid)){
                     myChild.setBirthDate(kid);
-                    unknownPeople.stream().filter(r->kid.equals(r.getBirthDate())).forEach(e->myChild.setName(e.getName()));
+                    findName(myChild, possibleRelatives, kid);
                     myPerson.getChildren().add(myChild);
                 }else{
                     myChild.setName(kid);
-                    unknownPeople.stream().filter(r->kid.equals(r.getName())).forEach(e->myChild.setBirthDate(e.getBirthDate()));
+                    findBirthDate(myChild,possibleRelatives,kid);
                     myPerson.getChildren().add(myChild);
                 }
-            }else if(kid.equals(myPerson.getName()) || kid.equals(myPerson.getBirthDate())){
+            }else if(isThisMyPerson(kid, myPerson)){
                 Person myParent = new Person();
-                if(parent.contains("/")){
+                if(isDate(parent)){
                     myParent.setBirthDate(parent);
-                    unknownPeople.stream().filter(r->parent.equals(r.getBirthDate())).forEach(e->myParent.setName(e.getName()));
+                    findName(myParent, possibleRelatives, parent);
                     myPerson.getParents().add(myParent);
                 }else{
                     myParent.setName(parent);
-                    unknownPeople.stream().filter(r->parent.equals(r.getName())).forEach(e->myParent.setBirthDate(e.getBirthDate()));
+                    findBirthDate(myParent, possibleRelatives, parent);
                     myPerson.getParents().add(myParent);
                 }
             }
         }
         System.out.println(String.format("%s %s", myPerson.getName(), myPerson.getBirthDate()));
         System.out.println("Parents:");
-        myPerson.getParents().stream().forEach(e-> System.out.println(String.format("%s %s", e. getName(), e. getBirthDate())));
+        myPerson.getParents().stream()
+                .forEach(e-> System.out.println(String.format("%s %s", e. getName(), e. getBirthDate())));
         System.out.println("Children:");
-        myPerson.getChildren().stream().forEach(e-> System.out.println(String.format("%s %s", e.getName(), e.getBirthDate())));
+        myPerson.getChildren().stream()
+                .forEach(e-> System.out.println(String.format("%s %s", e.getName(), e.getBirthDate())));
 
+    }
+    public static Person findBirthDate(Person person, List<Person> possibleRelatives, String name){
+        for (Person possibleRelative : possibleRelatives) {
+            if(name.equals(possibleRelative.getName())){
+                person.setBirthDate(possibleRelative.getBirthDate());
+                break;
+            }
+        }
+        return person;
+    }
+
+    public static Person findName(Person person, List<Person> possibleRelatives, String date) {
+        for (Person possibleRelative : possibleRelatives) {
+            if(date.equals(possibleRelative.getBirthDate())){
+                person.setName(possibleRelative.getName());
+                break;
+            }
+        }
+        return person;
+    }
+
+    public static boolean isDate(String s){
+        if(s.contains("/")){
+            return true;
+        }
+        return false;
+    }
+    public static boolean isThisMyPerson(String info,Person myPerson){
+        if((info.equals(myPerson.getName()) || info.equals(myPerson.getBirthDate()))){
+            return true;
+        }
+        return false;
     }
 }
