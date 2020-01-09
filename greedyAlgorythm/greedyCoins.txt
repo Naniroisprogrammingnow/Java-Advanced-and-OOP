@@ -1,0 +1,14 @@
+Write a program, which gathers a sum of money,using the least possible number of coins. This is the range of possible coin values:
+•	{ 1, 2, 5, 10, 20, 50 }
+You will receive a desired sum. The goal is to reach the sum using as few coins as possible using a greedy approach.
+We’ll assume that each coin value and the desired sum are integers
+
+Exemples:
+Coins: 1, 2, 5, 10, 20, 50
+Sum: 923
+
+Coins: 1
+Sum: 42
+
+Coins: 3, 7
+Sum: 11
